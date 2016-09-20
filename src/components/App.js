@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateTodo from './Create-Todo'
 import TodosLists from './TodosList'
 
 const todos = [
@@ -25,7 +26,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, it's me</h1>
+        <h1>Todos App</h1>
+        <CreateTodo/>
         <TodosLists todos={this.state.todos}/>
       </div>
     );
