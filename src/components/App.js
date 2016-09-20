@@ -1,6 +1,7 @@
 import React from 'react';
 import CreateTodo from './Create-Todo'
 import TodosLists from './TodosList'
+import _ from 'lodash';
 
 const todos = [
   {
@@ -28,9 +29,17 @@ class App extends React.Component {
       <div>
         <h1>Todos App</h1>
         <CreateTodo createTask={this.createTask.bind(this)}/>
-        <TodosLists todos={this.state.todos}/>
+        <TodosLists todos={this.state.todos} toggleTask={this.toggleTask.bind(this)}/>
       </div>
     );
+  }
+
+  toggleTask(task) {
+    const foundTodo = _.find(this.state.todos, todo => todo.task === task);
+    foundTodo.isCompleted = !foundTodo.isCompleted;
+    this.setState({
+      todos: this.state.todos
+    })
   }
 
   createTask(task) {
