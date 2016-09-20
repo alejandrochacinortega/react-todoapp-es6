@@ -27,10 +27,21 @@ class App extends React.Component {
     return (
       <div>
         <h1>Todos App</h1>
-        <CreateTodo/>
+        <CreateTodo createTask={this.createTask.bind(this)}/>
         <TodosLists todos={this.state.todos}/>
       </div>
     );
+  }
+
+  createTask(task) {
+    console.log('hi task ', task);
+    this.state.todos.push({
+      task: task,
+      isCompleted:false
+    });
+    this.setState({
+      todo: this.state.todos
+    })
   }
 }
 
